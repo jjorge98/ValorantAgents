@@ -17,7 +17,9 @@ export default class CustomFlatlist extends React.Component {
     return (
       <TouchableOpacity
         style={styles.listItem}
-        onPress={() => navigation.navigate('Profile', { character: item })}>
+        onPress={() =>
+          navigation.navigate('Agent', { screen: 'Agent', agent: item })
+        }>
         <View style={styles.imgArea}>
           <Image style={styles.img} source={item.icon} />
         </View>

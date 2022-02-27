@@ -26,7 +26,14 @@ const MainStack = () => {
           }}
         />
 
-        <Stack.Screen name="Agents" component={Agent} />
+        <Stack.Screen
+          name="Agent"
+          component={Agent}
+          options={{
+            headerTintColor: '#0a1b1f',
+            headerStyle: { backgroundColor: '#ff4457' },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
