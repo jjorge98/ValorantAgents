@@ -27,7 +27,6 @@ export default class CustomInput extends React.Component {
 const styles = StyleSheet.create({
   mainView: {
     height: 40,
-    marginHorizontal: 20,
     backgroundColor: '#ffffff',
     borderRadius: 7,
     borderColor: '#0a1b1f',

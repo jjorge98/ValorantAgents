@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {
-  Dimensions,
   Image,
-  ImageBackground,
   Modal,
   ScrollView,
   StyleSheet,
@@ -18,8 +16,9 @@ export default class AgentHeader extends React.Component {
 
     this.state = {
       isModalVisible: false,
-      modalImage: '',
+      modalImage: props.data.vertical1,
     };
+    console.log(props);
   }
 
   render() {
@@ -48,7 +47,7 @@ export default class AgentHeader extends React.Component {
                 modalImage: this.props.data.vertical2,
               });
             }}>
-            <Image style={styles.img} source={this.props.data.horizontal2} />
+            <Image source={this.props.data.horizontal2} />
           </TouchableOpacity>
         </ScrollView>
 

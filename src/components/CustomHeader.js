@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   description: {
-    marginTop: 20,
     fontSize: 18,
     fontFamily: 'fantasy',
     color: '#ffffff',

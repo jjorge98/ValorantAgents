@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View } from 'react-native-animatable';
 import CustomFlatlist from '../components/CustomFlatlist';
 import CustomHeader from '../components/CustomHeader';
+import CustomInput from '../components/CustomInput';
 
 const agents = [
   {
@@ -369,19 +371,112 @@ const agents = [
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      agentsFiltered: agents,
+      icon: require('../assets/images/az.png'),
+      alphabetical: false,
+    };
   }
+
+  listFilter = input => {
+    const filteredList = [];
+
+    input = input.toLowerCase();
+
+    agents.forEach(agent => {
+      if (
+        agent.name.toLowerCase().indexOf(input) > -1 ||
+        agent.codename.toLowerCase().indexOf(input) > -1
+      ) {
+        filteredList.push(agent);
+      } else {
+        agent.aliases.forEach(alias => {
+          if (
+            alias.toLowerCase().indexOf(input) > -1 &&
+            filteredList.indexOf(agent) === -1
+          ) {
+            filteredList.push(agent);
+          }
+        });
+      }
+    });
+
+    this.setState({
+      agentsFiltered: filteredList,
+    });
+  };
+
+  sortAlphabetically = () => {
+    const sortedAgents = this.state.agentsFiltered;
+
+    if (this.state.alphabetical) {
+      sortedAgents.sort((a, b) => {
+        if (a.name < b.name) {
+          return 1;
+        }
+
+        if (a.name > b.name) {
+          return -1;
+        }
+
+        return 0;
+      });
+    } else {
+      sortedAgents.sort((a, b) => {
+        if (a.name > b.name) {
+          return 1;
+        }
+
+        if (a.name < b.name) {
+          return -1;
+        }
+
+        return 0;
+      });
+    }
+
+    this.setState({
+      alphabetical: !this.state.alphabetical,
+      agentsFiltered: sortedAgents,
+    });
+  };
 
   render() {
     const { navigation } = this.props;
 
     return (
       <View style={styles.mainView}>
-        <CustomHeader
-          title="Valorant Agents"
-          description="Descubra mais sobre cada agente clicando na lista abaixo"
-        />
+        <View animation="slideInUp">
+          <CustomHeader
+            title="Valorant Agents"
+            description="Descubra mais sobre cada agente clicando na lista abaixo"
+          />
+        </View>
 
-        <CustomFlatlist data={agents} navigation={navigation} />
+        <View style={styles.filterView}>
+          <View animation="slideInLeft" style={styles.inputView}>
+            <CustomInput
+              placeholder="Pesquisar..."
+              keyboard="default"
+              isSecure={false}
+              changeFunction={input => this.listFilter(input)}
+            />
+          </View>
+
+          <View animation="slideInRight">
+            <TouchableOpacity onPress={this.sortAlphabetically}>
+              <Image source={this.state.icon} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View animation="slideInDown" style={styles.iconView}>
+          <CustomFlatlist
+            data={this.state.agentsFiltered}
+            navigation={navigation}
+          />
+        </View>
       </View>
     );
   }
@@ -392,5 +487,16 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#ff4457',
     height: '100%',
+  },
+  filterView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 15,
+  },
+  inputView: {
+    flex: 3,
+  },
+  iconView: {
+    flex: 1,
   },
 });
