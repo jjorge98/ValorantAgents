@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { styles } from '../assets/styles/styles';
 import AgentDetails from '../components/AgentDetails';
 import AgentHeader from '../components/AgentHeader';
 
@@ -22,7 +23,7 @@ export default class Agent extends React.Component {
     };
 
     return (
-      <View style={styles.mainView}>
+      <View style={styles.mainViewA}>
         <AgentHeader data={headerData} />
 
         <ScrollView>
@@ -60,11 +61,3 @@ export default class Agent extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  mainView: {
-    padding: 20,
-    backgroundColor: '#ff4457',
-    height: '100%',
-  },
-});

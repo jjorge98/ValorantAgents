@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import { View } from 'react-native-animatable';
+import { styles } from '../assets/styles/styles';
 import CustomFlatlist from '../components/CustomFlatlist';
 import CustomHeader from '../components/CustomHeader';
 import CustomInput from '../components/CustomInput';
@@ -446,7 +447,7 @@ export default class Home extends React.Component {
     const { navigation } = this.props;
 
     return (
-      <View style={styles.mainView}>
+      <View style={styles.mainViewH}>
         <View animation="slideInUp">
           <CustomHeader
             title="Valorant Agents"
@@ -454,8 +455,8 @@ export default class Home extends React.Component {
           />
         </View>
 
-        <View style={styles.filterView}>
-          <View animation="slideInLeft" style={styles.inputView}>
+        <View style={styles.filterViewH}>
+          <View animation="slideInLeft" style={styles.inputViewH}>
             <CustomInput
               placeholder="Pesquisar..."
               keyboard="default"
@@ -471,7 +472,7 @@ export default class Home extends React.Component {
           </View>
         </View>
 
-        <View animation="slideInDown" style={styles.iconView}>
+        <View animation="slideInDown" style={styles.iconViewH}>
           <CustomFlatlist
             data={this.state.agentsFiltered}
             navigation={navigation}
@@ -481,22 +482,3 @@ export default class Home extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  mainView: {
-    padding: 20,
-    backgroundColor: '#ff4457',
-    height: '100%',
-  },
-  filterView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 15,
-  },
-  inputView: {
-    flex: 3,
-  },
-  iconView: {
-    flex: 1,
-  },
-});

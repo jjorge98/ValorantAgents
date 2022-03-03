@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as Animatable from 'react-native-animatable';
-import { Alert, ImageBackground, StyleSheet } from 'react-native';
+import { Alert, ImageBackground } from 'react-native';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/button/CustomButton';
+import { styles } from '../assets/styles/styles';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -89,16 +90,16 @@ export default class Login extends React.Component {
   render() {
     return (
       <ImageBackground
-        style={styles.imgBackground}
+        style={styles.imgBackgroundL}
         source={{
           uri: 'https://i.pinimg.com/originals/68/71/a1/6871a1baad18a31d32f8aeaa4fab2aa7.jpg',
         }}>
-        <Animatable.View style={styles.mainContent}>
+        <Animatable.View style={styles.mainContentL}>
           <Animatable.View animation="slideInDown">
-            <Animatable.Text style={styles.title}>Login</Animatable.Text>
+            <Animatable.Text style={styles.titleL}>Login</Animatable.Text>
           </Animatable.View>
 
-          <Animatable.View style={styles.inputArea} animation="slideInLeft">
+          <Animatable.View style={styles.inputAreaL} animation="slideInLeft">
             <CustomInput
               placeholder="CPF"
               keyboard="number-pad"
@@ -126,28 +127,3 @@ export default class Login extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  mainContent: {
-    padding: 25,
-  },
-  imgBackground: {
-    height: '100%',
-    width: '100%',
-    justifyContent: 'flex-end',
-  },
-  inputArea: {
-    marginVertical: 20,
-  },
-  title: {
-    fontSize: 25,
-    color: '#0a1b1f',
-    fontWeight: '700',
-    alignSelf: 'center',
-    fontFamily: 'fantasy',
-    backgroundColor: 'rgba(255, 68, 87, 255)',
-  },
-  centerArea: {
-    justifyContent: 'center',
-  },
-});

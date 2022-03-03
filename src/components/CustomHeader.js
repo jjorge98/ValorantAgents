@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
+import { styles } from '../assets/styles/styles';
 
 export default class CustomHeader extends React.Component {
   constructor(props) {
@@ -11,36 +12,12 @@ export default class CustomHeader extends React.Component {
     return (
       <View>
         <Image
-          style={styles.img}
+          style={styles.imgCH}
           source={require('../assets/images/valorantLogo.png')}
         />
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.titleCH}>{title}</Text>
+        <Text style={styles.descriptionCH}>{description}</Text>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  img: {
-    height: 120,
-    width: 120,
-    alignSelf: 'center',
-  },
-  title: {
-    marginTop: 20,
-    fontSize: 25,
-    fontFamily: 'fantasy',
-    alignSelf: 'center',
-    color: '#0a1b1f',
-    fontWeight: '600',
-  },
-  description: {
-    fontSize: 18,
-    fontFamily: 'fantasy',
-    color: '#ffffff',
-    justifyContent: 'center',
-    textAlign: 'center',
-    paddingHorizontal: 30,
-  },
-});

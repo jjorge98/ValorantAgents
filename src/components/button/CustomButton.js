@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { styles } from '../../assets/styles/styles';
 import ButtonText from './ButtonText';
 
 export default class CustomButton extends React.Component {
@@ -10,21 +11,9 @@ export default class CustomButton extends React.Component {
   render() {
     const { title, onPressFunction } = this.props;
     return (
-      <TouchableOpacity style={styles.btnArea} onPress={onPressFunction}>
+      <TouchableOpacity style={styles.btnAreaCB} onPress={onPressFunction}>
         <ButtonText title={title} />
       </TouchableOpacity>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  btnArea: {
-    height: 40,
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    alignSelf: 'center',
-    backgroundColor: '#0a1b1f',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

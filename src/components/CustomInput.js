@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as Animatable from 'react-native-animatable';
-import { StyleSheet, TextInput } from 'react-native';
+import { TextInput } from 'react-native';
+import { colors } from '../assets/styles/colors';
+import { styles } from '../assets/styles/styles';
 
 export default class CustomInput extends React.Component {
   constructor(props) {
@@ -10,11 +12,11 @@ export default class CustomInput extends React.Component {
   render() {
     const { placeholder, keyboard, isSecure, changeFunction } = this.props;
     return (
-      <Animatable.View style={styles.mainView} animation="fadeIn">
+      <Animatable.View style={styles.mainViewCI} animation="fadeIn">
         <TextInput
-          style={styles.input}
+          style={styles.inputCI}
           placeholder={placeholder}
-          placeholderTextColor="rgba(12, 26, 31, 0.7)"
+          placeholderTextColor={colors.trasparentDarkGray7}
           keyboardType={keyboard}
           secureTextEntry={isSecure}
           onChangeText={changeFunction}
@@ -23,17 +25,3 @@ export default class CustomInput extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  mainView: {
-    height: 40,
-    backgroundColor: '#ffffff',
-    borderRadius: 7,
-    borderColor: '#0a1b1f',
-    borderWidth: 2,
-    marginVertical: 5,
-  },
-  input: {
-    paddingHorizontal: 15,
-  },
-});

@@ -4,6 +4,7 @@ import * as React from 'react';
 import Home from './Home';
 import Login from './Login';
 import Agent from './Agent';
+import { colors } from '../assets/styles/colors';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,8 +22,8 @@ const MainStack = () => {
           name="Home"
           component={Home}
           options={{
-            headerTintColor: '#0a1b1f',
-            headerStyle: { backgroundColor: '#ff4457' },
+            headerTintColor: colors.darkGray,
+            headerStyle: { backgroundColor: colors.mainColor },
           }}
         />
 
@@ -30,8 +31,8 @@ const MainStack = () => {
           name="Agent"
           component={Agent}
           options={{
-            headerTintColor: '#0a1b1f',
-            headerStyle: { backgroundColor: '#ff4457' },
+            headerTintColor: colors.darkGray,
+            headerStyle: { backgroundColor: colors.mainColor },
           }}
         />
       </Stack.Navigator>

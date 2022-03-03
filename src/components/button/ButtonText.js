@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Text } from 'react-native';
+import { styles } from '../../assets/styles/styles';
 
 export default class ButtonText extends React.Component {
   constructor(props) {
@@ -7,15 +8,6 @@ export default class ButtonText extends React.Component {
   }
 
   render() {
-    return <Text style={styles.btnText}>{this.props.title}</Text>;
+    return <Text style={styles.btnTextBT}>{this.props.title}</Text>;
   }
 }
-
-const styles = StyleSheet.create({
-  btnText: {
-    justifyContent: 'center',
-    color: 'white',
-    fontSize: 15,
-    fontWeight: '500',
-  },
-});

@@ -1,13 +1,7 @@
 import * as React from 'react';
-import {
-  Image,
-  Modal,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { Image, Modal, ScrollView, Text, TouchableOpacity } from 'react-native';
 import { View } from 'react-native-animatable';
+import { styles } from '../assets/styles/styles';
 import CustomButton from './button/CustomButton';
 
 export default class AgentHeader extends React.Component {
@@ -28,9 +22,9 @@ export default class AgentHeader extends React.Component {
           horizontal
           pagingEnabled
           snapToAlignment={'center'}
-          style={styles.scroll}>
+          style={styles.scrollAH}>
           <TouchableOpacity
-            style={styles.leftImg}
+            style={styles.leftImgAH}
             onPress={() => {
               this.setState({
                 isModalVisible: true,
@@ -51,10 +45,10 @@ export default class AgentHeader extends React.Component {
           </TouchableOpacity>
         </ScrollView>
 
-        <Text style={styles.title}>{this.props.data.name}</Text>
+        <Text style={styles.titleAH}>{this.props.data.name}</Text>
 
         <Modal animationType="slide" visible={this.state.isModalVisible}>
-          <View style={styles.teste}>
+          <View style={styles.modalViewAH}>
             <Image source={this.state.modalImage} />
             <CustomButton
               title="Fechar"
@@ -70,27 +64,3 @@ export default class AgentHeader extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  scroll: {
-    marginVertical: 15,
-  },
-  leftImg: {
-    marginRight: 10,
-  },
-  title: {
-    marginBottom: 20,
-    fontSize: 25,
-    fontFamily: 'fantasy',
-    alignSelf: 'center',
-    color: '#0a1b1f',
-    fontWeight: '600',
-  },
-  teste: {
-    height: '100%',
-    width: '100%',
-    alignItems: 'center',
-    backgroundColor: '#ff4457',
-    justifyContent: 'space-around',
-  },
-});
