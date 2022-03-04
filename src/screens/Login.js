@@ -72,7 +72,6 @@ export default class Login extends React.Component {
   };
 
   onPress = () => {
-    // Search for a way to show loading animation
     if ([this.state.cpf, this.state.password].includes('')) {
       Alert.alert('Preencha todos os campos para continuar!');
     } else if (!this.checkCpf(this.state.cpf)) {
