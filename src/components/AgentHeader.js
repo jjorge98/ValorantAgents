@@ -12,7 +12,6 @@ export default class AgentHeader extends React.Component {
       isModalVisible: false,
       modalImage: props.data.vertical1,
     };
-    console.log(props);
   }
 
   render() {
